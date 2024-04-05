@@ -1,6 +1,6 @@
 from django.db import models
 from apps.products.models import Product
-# from accounts.models import Supplier  # Предполагая, что модель Supplier теперь в приложении accounts
+from apps.accounts.models import Supplier  # Предполагая, что модель Supplier теперь в приложении accounts
 
 
 class Delivery(models.Model):
@@ -9,7 +9,7 @@ class Delivery(models.Model):
         ('shipped', 'Shipped'),
         ('received', 'Received'),
     )
-    # supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='ordered')
     expected_arrival = models.DateField()
     actual_arrival = models.DateField(null=True, blank=True)
