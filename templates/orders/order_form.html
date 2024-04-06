@@ -1,0 +1,12 @@
+
+{% block content %}
+  <h2>Create Order</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    {{ items.management_form }}  <!-- Формсет элементов заказа -->
+    {% for form in items.forms %}
+      {{ form.as_p }}
+    {% endfor %}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

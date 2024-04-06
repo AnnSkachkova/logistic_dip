@@ -1,0 +1,7 @@
+{% block content %}
+  <h2>Удалить заказ №{{ object.id }}?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+  </form>
+{% endblock %}
