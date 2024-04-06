@@ -1,0 +1,12 @@
+
+<h2>{{ view.object.new_record|yesno:"Редактирование поставки,Создание поставки" }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h3>Продукты в поставке</h3>
+    {{ delivery_product_formset.management_form }}
+    {% for form in delivery_product_formset %}
+        {{ form.as_p }}
+    {% endfor %}
+    <button type="submit">Сохранить</button>
+</form>

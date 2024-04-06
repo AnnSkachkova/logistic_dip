@@ -1,0 +1,7 @@
+<h2>Удалить поставку</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Вы уверены, что хотите удалить поставку от "{{ object.supplier }}"?</p>
+    <button type="submit">Удалить</button>
+    <a href="{% url 'deliveries:delivery_list' %}">Отмена</a>
+</form>

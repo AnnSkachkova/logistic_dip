@@ -1,0 +1,11 @@
+<h2>Список поставок</h2>
+<a href="{% url 'deliveries:delivery_create' %}">Создать новую поставку</a>
+<ul>
+    {% for delivery in deliveries %}
+    <li>
+        Поставка от {{ delivery.supplier }} - Статус: {{ delivery.get_status_display }} 
+        (<a href="{% url 'deliveries:delivery_update' delivery.id %}">редактировать</a> | 
+        <a href="{% url 'deliveries:delivery_delete' delivery.id %}">удалить</a>)
+    </li>
+    {% endfor %}
+</ul>
