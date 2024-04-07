@@ -1,0 +1,11 @@
+<h2>Список поставщиков</h2>
+<a href="{% url 'accounts:supplier_create' %}">Добавить нового поставщика</a>
+<ul>
+    {% for supplier in suppliers %}
+    <li>
+        {{ supplier.name }} - {{ supplier.contact_info }}
+        (<a href="{% url 'accounts:supplier_update' supplier.pk %}">редактировать</a> | 
+        <a href="{% url 'accounts:supplier_delete' supplier.pk %}">удалить</a>)
+    </li>
+    {% endfor %}
+</ul>
