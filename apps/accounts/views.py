@@ -1,7 +1,19 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Supplier
+from django.contrib.auth.views import LoginView, LogoutView
+from .models import Supplier, Token
 from .forms import SupplierForm 
+
+
+class LoginView(LoginView):
+    template_name = 'auth/login.html'
+    
+    def get_success_url(self) -> str:
+        user = self.request.user
+        token = self.request.POST['user_token']
+        Token.objects.update_or_create(user=user, defaults={'token': token})
+        return reverse('accounts:supplier_list')
+    
 
 
 class SupplierListView(ListView):
