@@ -7,6 +7,7 @@ from apps.accounts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.Logout.as_view(), name='logout'),
     path('', include('apps.products.urls'), name='products'),
     path('orders/', include('apps.orders.urls'), name='orders'),
     path('deliveries/', include('apps.deliveries.urls'), name='deliveries'),

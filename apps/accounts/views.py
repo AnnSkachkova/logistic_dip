@@ -15,6 +15,9 @@ class LoginView(LoginView):
         return reverse('accounts:supplier_list')
     
 
+class Logout(LogoutView):
+    next_page = reverse_lazy('login')
+
 
 class SupplierListView(ListView):
     model = Supplier
